@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>homework_js_15-16</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/16.js"></script>
+</head>
+<body>
+	<div id="pixabay">
+		<img src="img/pixabay.png" alt="pixabay">
+		<!-- <p>PIXABAY SEARCH</p> -->
+		<form id="form">
+			<input id="ask" type="text" name="search" placeholder="Find some pictures on pixabay.com">
+			<button id="find"><img src="https://www.google.com/uds/css/v2/search_box_icon.png"></button>
+		</form>
+		<div id="pict"></div>
+	</div>
+
+	<!-- GOOGLE -->
+	<div id="google">
+		<img src="img/google.png" alt="google">
+		<!-- <p>GOOGLE SEARCH</p> -->
+		<script>
+		  	(function() {
+			    var cx = '003854162408877530332:wwzgipbq0ji';
+			    var gcse = document.createElement('script');
+			    gcse.type = 'text/javascript';
+			    gcse.async = true;
+			    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+			    var s = document.getElementsByTagName('script')[0];
+			    s.parentNode.insertBefore(gcse, s);
+		  	})();
+		</script>
+		<gcse:search></gcse:search>
+	</div>
+
+	<!-- PIXABAY -->
+	<script>
+		$("#find").click(function(e){
+			e.preventDefault();
+			var pict = document.getElementById('pict');
+			var images = pict.getElementsByTagName('img');
+			if (images.length > 0){
+					pict.innerHTML = '';
+			}
+			var ask = $("#ask").val();
+			console.log(ask);
+			var API_KEY = '5457095-f7990a8bedb2fed3c2cabe398';
+			var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent(ask) + '&image_type=photo';
+			$.getJSON(URL, function(data){
+			    if (parseInt(data.totalHits) > 0){
+			        $.each(data.hits, function(i, hit){
+			        	$(pict).append('<img src="' + hit.previewURL + '" alt="">');
+			        });
+				}
+			    else {
+			        console.log('No hits');
+			    }
+			});
+		});
+	</script>
+	<div id="maketest">
+		<button id="addtest">Create TEST</button>
+		<table id="tb" class="hide">
+			<!-- Question -->
+			<tr>
+				<td class="col1">
+					<input id="question" type="text" name="question" placeholder="Enter new Question here">
+				</td>
+				<td class="col2"></td>
+				<!-- <td class="col3">
+					<button>Edit</button>
+				</td> -->
+			</tr>
+			<!-- Answers -->
+			<tr>
+				<td class="col1">
+					<input id="answer1" type="text" name="answer1" placeholder="Enter some answer here and select checkbox if this true">
+				</td>
+				<td  class="col2">
+					<input type="checkbox" name="ifright1">
+				</td>
+				<!-- <td class="col3">
+					<button>Edit</button>
+				</td> -->
+			</tr>
+			<tr>
+				<td class="col1">
+					<input id="answer2" type="text" name="answer2" placeholder="Enter some answer here and select checkbox if this true">
+				</td>
+				<td  class="col2">
+					<input type="checkbox" name="ifright2">
+				</td>
+				<!-- <td  class="col3">
+					<button>Edit</button>
+				</td> -->
+			</tr>
+			<br>
+			<div id="control" class="hide">
+				<button id="addansw">Add new Answer</button><button id="next">Next Question</button><button id="finish">Enough</button>
+			</div>
+		</table>
+
+	</div>
+</body>
+</html>
