@@ -70,9 +70,6 @@
 					<input id="question" type="text" name="question" placeholder="Enter new Question here">
 				</td>
 				<td class="col2"></td>
-				<!-- <td class="col3">
-					<button>Edit</button>
-				</td> -->
 			</tr>
 			<!-- Answers -->
 			<tr>
@@ -80,29 +77,26 @@
 					<input id="answer1" type="text" name="answer1" placeholder="Enter some answer here and select checkbox if this true">
 				</td>
 				<td  class="col2">
-					<input type="checkbox" name="ifright1">
+					<input type="radio" name="thisRight">
 				</td>
-				<!-- <td class="col3">
-					<button>Edit</button>
-				</td> -->
 			</tr>
 			<tr>
 				<td class="col1">
 					<input id="answer2" type="text" name="answer2" placeholder="Enter some answer here and select checkbox if this true">
 				</td>
 				<td  class="col2">
-					<input type="checkbox" name="ifright2">
+					<input type="radio" name="thisRight">
 				</td>
-				<!-- <td  class="col3">
-					<button>Edit</button>
-				</td> -->
 			</tr>
 			<br>
 			<div id="control" class="hide">
-				<button id="addansw">Add new Answer</button><button id="next">Next Question</button><button id="finish">Enough</button>
+				<button id="addansw">Add new Answer</button>
+				<button id="next">Next Question</button>
+				<button id="finish">Save test</button>
+
+				<label id="label">Check this if correct variants more then 1 </label><input id="switcher" type="checkbox" name="switcher">
 			</div>
 		</table>
-
 	</div>
 </body>
 </html>

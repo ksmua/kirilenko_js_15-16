@@ -53,7 +53,7 @@
 }
 #tb{
 	width: 70%;
-	border: 1px dashed;
+	/*border: 1px dashed;*/
 }
 #tb tr input[type="text"]{
 	width: 100%;
@@ -61,4 +61,8 @@
 #tb .col2, .col3{
 	width: 5%;
 	text-align: center;
+}
+
+#label {
+	font-size: 0.8em;
 }
